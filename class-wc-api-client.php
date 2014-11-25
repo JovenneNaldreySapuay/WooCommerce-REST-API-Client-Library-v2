@@ -14,7 +14,7 @@ class WC_API_Client {
 	/**
 	 * API base endpoint
 	 */
-	const API_ENDPOINT = 'wc-api/v1/';
+	const API_ENDPOINT = 'wc-api/v2/';
 
 	/**
 	 * The HASH alorithm to use for oAuth signature, SHA256 or SHA1
@@ -94,7 +94,7 @@ class WC_API_Client {
 	 * @return mixed|json string
 	 */
 	public function get_order( $order_id ) {
-		return $this->_make_api_call( 'orders/' . $order_id );
+		return $this->_make_api_call( 'orders/' . $order_id , array('filter[meta]' => 'true'));
 	}
 
 	/**
@@ -183,7 +183,7 @@ class WC_API_Client {
 	 * @return mixed|json string
 	 */
 	public function get_customer( $customer_id ) {
-		return $this->_make_api_call( 'customers/' . $customer_id );
+		return $this->_make_api_call( 'customers/' . $customer_id, array('filter[meta]' => 'true') );
 	}
 
 	/**
